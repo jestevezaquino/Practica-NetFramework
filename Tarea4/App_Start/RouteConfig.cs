@@ -18,8 +18,8 @@ namespace Tarea4
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Default",
+           routes.MapRoute(
+                name: "Formulario",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Form", action = "Index", id = UrlParameter.Optional }
             );
