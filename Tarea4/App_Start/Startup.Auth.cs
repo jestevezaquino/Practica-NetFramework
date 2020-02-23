@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using Tarea4.Facebook;
 using Tarea4.Models;
 
 namespace Tarea4
@@ -64,6 +65,18 @@ namespace Tarea4
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            var facebookOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "197477127988089",
+                AppSecret = "9e729f1c448ede60c1bae7935b5c075f",
+                BackchannelHttpHandler = new FacebookBackChannelHandler(),
+                UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,email"
+            };
+
+            facebookOptions.Scope.Add("email");
+            app.UseFacebookAuthentication(facebookOptions);
+
         }
     }
 }
