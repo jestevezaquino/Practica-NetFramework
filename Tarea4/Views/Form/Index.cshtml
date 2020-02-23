@@ -8,41 +8,41 @@
 <div class="row mt-3 justify-content-center">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header bg-dark text-white">
+            <div class="card-header">
                 <h1 class="text-center">Formulario de solicitud</h1>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-dark text-white">
                 @using (Html.BeginForm("Index", "Form", FormMethod.Post, new { enctype = "multipart/meta-data" }))
                 {
                     <div class="form-group">
-                        @Html.TextBoxFor(a => a.Cedula, "", new { @class = "form-control", placeholder = "Escriba su cédula" })
+                        @Html.TextBoxFor(a => a.Cedula, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su cédula" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(a => a.Nombre, "", new { @class = "form-control", placeholder = "Escriba su nombre" })
+                        @Html.TextBoxFor(a => a.Nombre, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su nombre" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(a => a.Apellido, "", new { @class = "form-control", placeholder = "Escriba su apellido" })
+                        @Html.TextBoxFor(a => a.Apellido, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su apellido" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(a => a.Edad, "", new { @class = "form-control", placeholder = "Escriba su edad" })
+                        @Html.TextBoxFor(a => a.Edad, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su edad" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(a => a.Telefono, "", new { @class = "form-control", placeholder = "Escriba su teléfono" })
+                        @Html.TextBoxFor(a => a.Telefono, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su teléfono" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(a => a.Email, "", new { @class = "form-control", placeholder = "Escriba su email" })
+                        @Html.TextBoxFor(a => a.Email, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su email" })
                     </div>
                     <div class="form-check-inline">
-                        @Html.RadioButtonFor(a => a.Genero, "Masculino", new { @class = "form-check-input" })
+                        @Html.RadioButtonFor(a => a.Genero, "Masculino", new { @class = "form-check-input bg-dark text-white" })
                         @Html.Label("Masculino")
                     </div>
                     <div class="form-check-inline">
-                        @Html.RadioButtonFor(a => a.Genero, "Femenino", new { @class = "form-check-input" })
+                        @Html.RadioButtonFor(a => a.Genero, "Femenino", new { @class = "form-check-input bg-dark text-white" })
                         @Html.Label("Femenino")
                     </div>
                     <div class="form-group">
                         @Html.Label("Puesto al que aspira")
-                        @Html.DropDownListFor(a => a.Cargo, new SelectList(Enum.GetValues(typeof(Puesto))), "Elige una opción...", new { @class = "form-control" })
+                        @Html.DropDownListFor(a => a.Cargo, new SelectList(Enum.GetValues(typeof(Puesto))), "Elige una opción...", new { @class = "form-control bg-dark text-white" })
                     </div>
                     <div class="form-group">
                         @Html.Label("Elegir una foto")
@@ -53,7 +53,7 @@
                         <input type="file" class="form-control-file" name="Cv" accept="application/pdf">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <button type="submit" class="btn btn-success">
                             <i class="fas fa-check-circle"></i>
                             Registrar
