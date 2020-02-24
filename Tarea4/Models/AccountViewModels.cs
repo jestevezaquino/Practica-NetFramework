@@ -64,19 +64,19 @@ namespace Tarea4.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required (ErrorMessage = "El campo email es requerido.")]
+        [EmailAddress (ErrorMessage = "Debe introducir un email válido.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo contraseña es requerido.")]
         [StringLength(16, ErrorMessage = "La contraseña debe tener entre 8 y 16 caracteres.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirmar contraseña")]
+        [Display(Name = "Repetir contraseña")]
         [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
         public string ConfirmPassword { get; set; }
     }

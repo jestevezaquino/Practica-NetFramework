@@ -3,20 +3,20 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="nav-link" })
-        </li>
-        <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">@Html.ActionLink("Formulario", "Index", "Form", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+            <li class="nav-item nav-link pl-lg-5 text-info">Bienvenido @User.Identity.GetUserName()</li>
+            <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a></li>
+        </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">@Html.ActionLink("Registro", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class="nav-link"})</li>
-        <li class="nav-item">@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" , @class="nav-link"})</li>
+        <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Registrate", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
     </ul>
 }
