@@ -1,0 +1,69 @@
+﻿@model Tarea4.Models.Unidades
+@using Tarea4.Models
+@{
+    ViewBag.Title = "Medidas";
+}
+
+<div class="row pt-4">
+    <div class="col-md-12 d-flex justify-content-center">
+        <h2>Conversor de unidades</h2>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-md-5 border border-dark rounded px-0">
+        <div class="card-header d-flex justify-content-center bg-dark text-light">
+            <h4>Longitudes</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Medidas", "Conversor", FormMethod.Post))
+            {
+                if (ViewBag.Resultado != null) 
+                {   
+                    <div class="text-justify p-2 bg-warning rounded">
+                        <h4 class="border border-warning">La conversión de <span class="text-danger">@Model.CantidadLongitud</span> @Model.UnidadMed1 a @Model.UnidadMed2 son aproximadamente <span class="text-danger">@ViewBag.Resultado</span> @Model.UnidadMed2.</h4>
+                    </div><br />
+                }
+
+                @Html.Label("Escoja una unidad de longitud");
+                @Html.DropDownListFor(a=>a.UnidadMed1, new SelectList(Enum.GetValues(typeof(Longitud))), "Escoja una unidad.", new { @class = "form-control" });
+                <br />
+                @Html.TextBoxFor(a=>a.CantidadLongitud, new {@class="form-control", type="number", step="0.000001", placeholder="Digite la cantidad a convertir." });
+                <br />
+                @Html.Label("Escoja la unidad a la que desea convertir");
+                @Html.DropDownListFor(a=>a.UnidadMed2, new SelectList(Enum.GetValues(typeof(Longitud))), "Escoja una unidad.", new { @class = "form-control" });
+                <br />
+                <button name="btnConvertir1" class="btn btn-primary" type="submit" value="convertirLongitud">Convertir</button>
+            }
+        </div>
+    </div>
+        <div class="col-md-2"></div>
+    <div class="col-md-5 border border-dark rounded px-0">
+        <div class="card-header d-flex justify-content-center bg-dark text-light">
+            <h4>Temperaturas</h4>
+        </div>
+        <div class="card-body">
+            
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-md-5 border border-dark rounded px-0">
+        <div class="card-header d-flex justify-content-center bg-dark text-light">
+            <h4>Masa</h4>
+        </div>
+        <div class="card-body">
+            
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-5 border border-dark rounded px-0">
+        <div class="card-header d-flex justify-content-center bg-dark text-light">
+            <h4>Datos</h4>
+        </div>
+        <div class="card-body">
+            
+        </div>
+    </div>
+</div>
