@@ -8,36 +8,43 @@
 <div class="row mt-3 justify-content-center">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Formulario de solicitud</h1>
+            <div class="card-header bg-success">
+                <h1 class="text-center text-white">Formulario de solicitud</h1>
             </div>
             <div class="card-body bg-dark text-white">
-                @using (Html.BeginForm("Index", "Form", FormMethod.Post, new { enctype = "multipart/meta-data" }))
+                @using (Html.BeginForm("Index", "Form", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="form-group">
-                        @Html.ValidationMessageFor(a=>a.Cedula, "" ,new { @class="text-danger"})
+                        @Html.Label("Cédula:")
                         @Html.TextBoxFor(a => a.Cedula, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su cédula" })
+                        @Html.ValidationMessageFor(a => a.Cedula, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.ValidationMessageFor(a=>a.Nombre, "", new {@class="text-danger" })
+                        @Html.Label("Nombre:")
                         @Html.TextBoxFor(a => a.Nombre, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su nombre" })
+                        @Html.ValidationMessageFor(a => a.Nombre, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.ValidationMessageFor(a => a.Apellido, "", new { @class = "text-danger" })
+                        @Html.Label("Apellido:")
                         @Html.TextBoxFor(a => a.Apellido, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su apellido" })
+                        @Html.ValidationMessageFor(a => a.Apellido, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.ValidationMessageFor(a => a.Edad, "", new { @class = "text-danger" })
+                        @Html.Label("Edad:")
                         @Html.TextBoxFor(a => a.Edad, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su edad" })
+                        @Html.ValidationMessageFor(a => a.Edad, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.ValidationMessageFor(a => a.Telefono, "", new { @class = "text-danger" })
+                        @Html.Label("Teléfono:")
                         @Html.TextBoxFor(a => a.Telefono, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su teléfono" })
+                        @Html.ValidationMessageFor(a => a.Telefono, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
+                        @Html.Label("Email:")
                         @Html.TextBoxFor(a => a.Email, "", new { @class = "form-control bg-dark text-white", placeholder = "Escriba su email" })
+                        @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
                     </div>
+                        @Html.Label("Género:")<br />
                     <div class="form-check-inline">
                         @Html.RadioButtonFor(a => a.Genero, "Masculino", new { @class = "form-check-input bg-dark text-white" })
                         @Html.Label("Masculino")
@@ -47,27 +54,30 @@
                         @Html.Label("Femenino")
                     </div>
                     <div class="form-group">
-                        @Html.Label("Puesto al que aspira")
+                        @Html.Label("Puesto al que aspira:")
                         @Html.DropDownListFor(a => a.Cargo, new SelectList(Enum.GetValues(typeof(Puesto))), "Elige una opción...", new { @class = "form-control bg-dark text-white" })
                     </div>
+
                     <div class="form-group">
                         @Html.Label("Elegir una foto")
                         <input type="file" class="form-control-file" name="Foto" accept="image/*">
+                        @Html.ValidationMessageFor(a => a.Foto, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
                         @Html.Label("Subir Curriculum (PDF)")
-                        <input type="file" class="form-control-file" name="Cv" accept="application/pdf">
+                        <input type="file" class="form-control-file" name="pdf" accept="application/pdf">
+                        @Html.ValidationMessageFor(a => a.pdf, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" name="action">
                             <i class="fas fa-check-circle"></i>
                             Registrar
                         </button>
                     </div>
                 }
             </div>
-            
+
         </div>
     </div>
 </div>

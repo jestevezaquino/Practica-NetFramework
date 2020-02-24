@@ -1,8 +1,91 @@
-﻿
+﻿@model Tarea4.Models.Curriculum
 @{
     ViewBag.Title = "Resultados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Resultados</h2>
-
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header text-center"><h1>Resultados</h1></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Cédula</h6></div>
+                            <div class="card-body text-center">
+                                <p>@Model.Cedula</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Nombre</h6></div>
+                            <div class="card-body text-center">
+                                <p>@Model.Nombre</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Apellido</h6></div>
+                            <div class="card-body text-center">
+                                <p>@Model.Apellido</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Edad</h6></div>
+                            <div class="card-body text-center">
+                                <p>@Model.Edad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Teléfono</h6></div>
+                            <div class="card-body text-center">
+                                <p>@Model.Telefono</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Género</h6></div>
+                            <div class="card-body text-center">
+                                <p>@Model.Genero</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Puesto al que aspira</h6></div>
+                            <div class="card-body text-center">
+                                @Model.Cargo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Foto</h6></div>
+                            <div class="card-body text-center">
+                                <img src="\src/img/@ViewBag.picture" class="img-thumbnail" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header text-center"><h6>Curriculum PDF</h6></div>
+                            <div class="card-body">
+                                <a target="_blank" href="\src/pdf/@ViewBag.curriculum">@ViewBag.curriculum</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

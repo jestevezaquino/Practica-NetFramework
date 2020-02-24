@@ -16,28 +16,33 @@ namespace Tarea4.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Curriculum cv) 
+        public ActionResult Index(Curriculum cv)
         {
-            string fileName = cv.Foto.FileName;
-            cv.Foto.SaveAs(Server.MapPath("/img/" + fileName));
-            ViewBag.picture = fileName;
+            if (ModelState.IsValid)
+            {
+                string fileName = cv.Foto.FileName;
+                if (fileName != null)
+                {
+                    cv.Foto.SaveAs(Server.MapPath("/src/img/" + fileName));
+                    ViewBag.picture = fileName;
+                }
+                string archivo = cv.pdf.FileName;
 
-            string fileName2 = cv.Cv.FileName;
-            cv.Cv.SaveAs(Server.MapPath("/pdf/" + fileName2));
-            ViewBag.curriculum = fileName2;
-
-            if (ModelState.IsValid) 
-            { 
+                if (archivo != null)
+                {
+                    cv.pdf.SaveAs(Server.MapPath("/src/pdf/" + archivo));
+                    ViewBag.curriculum = archivo;
+                }
                 return View("Resultados", cv);
             }
-            else 
+            else
             {
-                return View();
+                return View("Index");
             }
-            
+
         }
 
-        public ActionResult Resultados(Curriculum cv) 
+        public ActionResult Resultados(Curriculum cv)
         {
             return View(cv);
         }
