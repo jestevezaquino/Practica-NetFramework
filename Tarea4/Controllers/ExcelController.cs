@@ -33,16 +33,32 @@ namespace Tarea4.Controllers
             string[,] matriz;
             int r = 0;
             int c = 0;
-            while (ws.Cell(r, c).ValueAsString != "") 
+            int g = 0;
+            bool comprobar = false;
+            do
             {
-                r++;
-                c++;
+                if (ws.Cell(r, c).ValueAsString == "")
+                {
+                    r++;
+                    g = c;
+                    c = 0;
+                    if (ws.Cell(r, c).ValueAsString == "")
+                    {
+                        comprobar = true;
+                    }
+                    c++;
+                }
+                else
+                {
+                    c++;
+                }
             }
-            matriz = new string[r, c];
+            while (comprobar == false);
+            matriz = new string[r, g];
 
             for(int i = 0; i < r; i++) 
             { 
-                for(int j = 0; j<c; j++) 
+                for(int j = 0; j<g; j++) 
                 {
                     matriz[i, j] = ws.Cell(i, j).ValueAsString;
                 }
