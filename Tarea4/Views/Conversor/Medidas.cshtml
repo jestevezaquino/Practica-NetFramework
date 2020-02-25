@@ -99,7 +99,25 @@
             <h4>Datos</h4>
         </div>
         <div class="card-body">
-            
+            @using (Html.BeginForm("Medidas", "Conversor", FormMethod.Post))
+            {
+                if (ViewBag.Resultado4 != null)
+                {
+                    <div class="text-justify p-2 bg-warning rounded">
+                        <h4 class="border border-warning">La conversión de <span class="text-danger">@Model.CantidadDatos</span> @Model.UnidadMed1 a @Model.UnidadMed2 son aproximadamente <span class="text-danger">@ViewBag.Resultado4</span> @Model.UnidadMed2.</h4>
+                    </div><br />
+                }
+
+                @Html.Label("Escoja una unidad de Datos");
+                @Html.DropDownListFor(a => a.UnidadMed1, new SelectList(Enum.GetValues(typeof(Datos))), "Escoja una unidad.", new { @class = "form-control" });
+                <br />
+                @Html.TextBoxFor(a => a.CantidadDatos, new { @class = "form-control", type = "number", step = "0.000001", placeholder = "Digite la cantidad a convertir." });
+                <br />
+                @Html.Label("Escoja la unidad a la que desea convertir");
+                @Html.DropDownListFor(a => a.UnidadMed2, new SelectList(Enum.GetValues(typeof(Datos))), "Escoja una unidad.", new { @class = "form-control" });
+                <br />
+                <button name="btnConvertir4" class="btn btn-primary" type="submit" value="convertirDatos">Convertir</button>
+            }
         </div>
     </div>
 </div>

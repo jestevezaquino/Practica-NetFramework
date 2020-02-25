@@ -57,7 +57,18 @@ namespace Tarea4.Controllers
             }
             else if (Request.Form["btnConvertir4"] == "convertirDatos")
             {
-                ViewBag.test = "LE DISTE A Temperatura!";
+                uds.CantidadDatos = Double.Parse(Request.Form["CantidadDatos"]);
+                uds.UnidadMed1 = Request.Form["UnidadMed1"];
+                uds.UnidadMed2 = Request.Form["UnidadMed2"];
+
+                if (ConversorDatos(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadDatos) >= 1)
+                {
+                    ViewBag.Resultado4 = ConversorDatos(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadDatos).ToString("N2");
+                }
+                else
+                {
+                    ViewBag.Resultado4 = ConversorDatos(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadDatos).ToString("N15");
+                }
             }
 
             return View(uds);
@@ -211,5 +222,69 @@ namespace Tarea4.Controllers
 
             return unidadConvertida;
         }
+
+        double ConversorDatos(string unidad1, string unidad2, double cantidadSolicitada)
+        {
+            //Se utilizará el metro como medida base para las respectivas conversiones.
+            double unidadEnMb = 0;
+            double unidadConvertida = 0;
+
+            switch (unidad1)
+            {
+                case "Bit":
+                    unidadEnMb = cantidadSolicitada / 8e+6;
+                    break;
+
+                case "Byte":
+                    unidadEnMb = cantidadSolicitada / 1e+6;
+                    break;
+
+                case "Kilobyte":
+                    unidadEnMb = cantidadSolicitada / 1000;
+                    break;
+
+                case "Megabyte":
+                    unidadEnMb = cantidadSolicitada;
+                    break;
+
+                case "Gigabyte":
+                    unidadEnMb = cantidadSolicitada * 1000;
+                    break;
+
+                case "Terabyte":
+                    unidadEnMb = cantidadSolicitada * 1e+6;
+                    break;
+            }
+
+            switch (unidad2)
+            {
+                case "Bit":
+                    unidadConvertida = unidadEnMb * 8e+6;
+                    break;
+
+                case "Byte":
+                    unidadConvertida = unidadEnMb * 1e+6;
+                    break;
+
+                case "Kilobyte":
+                    unidadConvertida = unidadEnMb * 1000;
+                    break;
+
+                case "Megabyte":
+                    unidadConvertida = unidadEnMb;
+                    break;
+
+                case "Gigabyte":
+                    unidadConvertida = unidadEnMb / 1000;
+                    break;
+
+                case "Terabyte":
+                    unidadConvertida = unidadEnMb / 1e+6;
+                    break;
+            }
+
+            return unidadConvertida;
+        }
+
     }
 }
