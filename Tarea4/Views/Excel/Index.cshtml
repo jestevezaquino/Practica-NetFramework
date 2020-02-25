@@ -12,12 +12,12 @@
 
             <div class="card-body bg-dark">
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-6">
+                        <div class="card text-center">
                             <div class="card-header text-center">
                                 <h5>Cargar archivo</h5>
                             </div>
-                            @using (Html.BeginForm("_ExcelPartial", "Excel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            @using (Html.BeginForm("Datos", "Excel", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             { 
                              <div class="card-body">
                                      <input type="file" accept="application/vnd.ms-excel.12" name="archivo" />

@@ -17,14 +17,14 @@ namespace Tarea4.Controllers
         }
 
 
-        public ActionResult _ExcelPartial()
+        public ActionResult Datos()
         {
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult _ExcelPartial(HttpPostedFileBase archivo)
+        public ActionResult Datos(HttpPostedFileBase archivo)
         {
             archivo.SaveAs(Server.MapPath("/Lector/" + archivo.FileName));
             Spreadsheet doc = new Spreadsheet();
@@ -33,7 +33,7 @@ namespace Tarea4.Controllers
             string[,] matriz;
             int r = 0;
             int c = 0;
-            while (!string.IsNullOrEmpty(ws.Cell(r, c).ValueAsString)) 
+            while (ws.Cell(r, c).ValueAsString != "") 
             {
                 r++;
                 c++;

@@ -1,13 +1,17 @@
 ﻿@model  string[,]
-<div class="card">
-    <div class="card-header text-center"><h5>Datos Leídos</h5></div>
-    <div class="card-body">
-        <table class="table">
+@{
+    ViewBag.Title = "Datos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card mt-3">
+    <div class="card-header text-center  bg-success text-white"><h5>Datos Leídos</h5></div>
+    <div class="card-body bg-dark">
+        <table class="table text-white">
             <thead>
                 <tr>
                     @for (int i = 0; i < Model.GetLength(1); i++)
                     {
-                      <th scope="col">@Model[0, i]</th>
+                        <th scope="col">@Model[0, i]</th>
                     }
                 </tr>
             </thead>
@@ -18,7 +22,7 @@
                     <tr>
                         @for (int j = 0; j < Model.GetLength(1); j++)
                         {
-                        <td>@Model[i, j]</td>
+                            <td>@Model[i, j]</td>
                         }
                     </tr>
                 }
@@ -26,5 +30,5 @@
             </tbody>
 
         </table>
-        </div>
+    </div>
 </div>
