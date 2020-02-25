@@ -8,6 +8,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">@Html.ActionLink("Formulario", "Index", "Form", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
         <li class="nav-item">@Html.ActionLink("Conversor", "Medidas", "Conversor", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Lector de Excel", "Index", "Excel", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
         <li class="nav-item nav-link pl-lg-5 text-info">Bienvenido @User.Identity.GetUserName()</li>
         <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Salir</a></li>
     </ul>

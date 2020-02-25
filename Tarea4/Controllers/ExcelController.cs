@@ -30,17 +30,25 @@ namespace Tarea4.Controllers
             Spreadsheet doc = new Spreadsheet();
             doc.LoadFromFile(Server.MapPath("/Lector/" + archivo.FileName));
             Worksheet ws = doc.Workbook.Worksheets.ByName("Hoja1");
-            List<string> columnas = new List<string>();
+            string[,] matriz;
             int r = 0;
             int c = 0;
-
-            while (ws.Cell(r, c).ValueAsString != null)
+            while (!string.IsNullOrEmpty(ws.Cell(r, c).ValueAsString)) 
             {
-                columnas.Add(ws.Cell(r, c).ValueAsString);
-                c++;
                 r++;
+                c++;
             }
-            return View();
+            matriz = new string[r, c];
+
+            for(int i = 0; i < r; i++) 
+            { 
+                for(int j = 0; j<c; j++) 
+                {
+                    matriz[i, j] = ws.Cell(i, j).ValueAsString;
+                }
+            }
+
+            return View(matriz);
         }
     }
 }
