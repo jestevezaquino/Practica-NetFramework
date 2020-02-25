@@ -24,22 +24,36 @@ namespace Tarea4.Controllers
                 uds.UnidadMed1 = Request.Form["UnidadMed1"];
                 uds.UnidadMed2 = Request.Form["UnidadMed2"];
 
-                if (conversorLongitud(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadLongitud) >= 1)
+                if (ConversorLongitud(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadLongitud) >= 1)
                 {
-                    ViewBag.Resultado = conversorLongitud(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadLongitud).ToString("N2");
+                    ViewBag.Resultado = ConversorLongitud(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadLongitud).ToString("N2");
                 }
                 else 
                 {
-                    ViewBag.Resultado = conversorLongitud(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadLongitud).ToString("N10");
+                    ViewBag.Resultado = ConversorLongitud(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadLongitud).ToString("N10");
                 }
             }
             else if (Request.Form["btnConvertir2"] == "convertirTemperatura")
             {
-                ViewBag.test = "LE DISTE A Temperatura!";
+                uds.CantidadTemperatura = Double.Parse(Request.Form["CantidadTemperatura"]);
+                uds.UnidadMed1 = Request.Form["UnidadMed1"];
+                uds.UnidadMed2 = Request.Form["UnidadMed2"];
+                ViewBag.Resultado2 = ConversorTemperatura(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadTemperatura).ToString("N2");
             }
             else if (Request.Form["btnConvertir3"] == "convertirMasa")
             {
-                ViewBag.test = "LE DISTE A Temperatura!";
+                uds.CantidadMasa = Double.Parse(Request.Form["CantidadMasa"]);
+                uds.UnidadMed1 = Request.Form["UnidadMed1"];
+                uds.UnidadMed2 = Request.Form["UnidadMed2"];
+                
+                if (ConversorMasa(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadMasa) >= 1)
+                {
+                    ViewBag.Resultado3 = ConversorMasa(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadMasa).ToString("N2");
+                }
+                else
+                {
+                    ViewBag.Resultado3 = ConversorMasa(uds.UnidadMed1, uds.UnidadMed2, uds.CantidadMasa).ToString("N10");
+                }
             }
             else if (Request.Form["btnConvertir4"] == "convertirDatos")
             {
@@ -49,7 +63,7 @@ namespace Tarea4.Controllers
             return View(uds);
         }
 
-        double conversorLongitud(string unidad1, string unidad2, double cantidadSolicitada) 
+        double ConversorLongitud(string unidad1, string unidad2, double cantidadSolicitada) 
         {
             //Se utilizará el metro como medida base para las respectivas conversiones.
             double unidadEnMetros=0;
@@ -106,6 +120,92 @@ namespace Tarea4.Controllers
 
                 case "Millas":
                     unidadConvertida = unidadEnMetros / 1609;
+                    break;
+            }
+
+            return unidadConvertida;
+        }
+
+        double ConversorTemperatura(string unidad1, string unidad2, double cantidadSolicitada)
+        {
+            //Se utilizará el metro como medida base para las respectivas conversiones.
+            double unidadEnCelcius = 0;
+            double unidadConvertida = 0;
+
+            switch (unidad1)
+            {
+                case "Celcius":
+                    unidadEnCelcius = cantidadSolicitada;
+                    break;
+
+                case "Farenheit":
+                    unidadEnCelcius = (cantidadSolicitada - 32) * 5 / 9;
+                    break;
+
+                case "Kelvin":
+                    unidadEnCelcius = cantidadSolicitada - 273.15;
+                    break;
+            }
+
+            switch (unidad2)
+            {
+                case "Celcius":
+                    unidadConvertida = unidadEnCelcius;
+                    break;
+
+                case "Farenheit":
+                    unidadConvertida = (unidadEnCelcius * 9 / 5) + 32;
+                    break;
+
+                case "Kelvin":
+                    unidadConvertida = unidadEnCelcius + 273.15;
+                    break;
+            }
+
+            return unidadConvertida;
+        }
+
+        double ConversorMasa(string unidad1, string unidad2, double cantidadSolicitada)
+        {
+            //Se utilizará el metro como medida base para las respectivas conversiones.
+            double unidadEnGramos = 0;
+            double unidadConvertida = 0;
+
+            switch (unidad1)
+            {
+                case "Gramo":
+                    unidadEnGramos = cantidadSolicitada;
+                    break;
+
+                case "Kilogramo":
+                    unidadEnGramos = cantidadSolicitada * 1000;
+                    break;
+
+                case "Onza":
+                    unidadEnGramos = cantidadSolicitada * 28.35;
+                    break;
+
+                case "Libra":
+                    unidadEnGramos = cantidadSolicitada * 454;
+                    break;
+            }
+
+            switch (unidad2)
+            {
+                case "Gramo":
+                    unidadConvertida = unidadEnGramos;
+                    break;
+
+                case "Kilogramo":
+                    unidadConvertida = unidadEnGramos / 1000;
+                    break;
+
+                case "Onza":
+                    unidadConvertida = unidadEnGramos / 28.35;
+                    break;
+
+                case "Libra":
+                    unidadConvertida = unidadEnGramos / 454;
                     break;
             }
 
