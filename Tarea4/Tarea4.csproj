@@ -251,6 +251,7 @@
     <Content Include="Views\Excel\Index.cshtml" />
     <Content Include="Views\Excel\Datos.cshtml" />
     <Content Include="Views\Contenido\Noticias.cshtml" />
+    <Content Include="Views\Contenido\Musica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
