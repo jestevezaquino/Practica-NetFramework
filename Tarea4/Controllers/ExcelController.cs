@@ -30,6 +30,15 @@ namespace Tarea4.Controllers
             Spreadsheet doc = new Spreadsheet();
             doc.LoadFromFile(Server.MapPath("/Lector/" + archivo.FileName));
             Worksheet ws = doc.Workbook.Worksheets.ByName("Hoja1");
+            if(ws == null) 
+            {
+                ws = doc.Workbook.Worksheets.ByName("Sheet1");
+                if(ws == null) 
+                {
+                    ViewBag.message = "Error no se puede leer tu archivo, aségurate que la hoja de trabajo tenga como nombre Hoja1 o Sheet1";
+                }
+            }
+            
             string[,] matriz;
             int r = 0;
             int c = 0;
@@ -55,10 +64,9 @@ namespace Tarea4.Controllers
             }
             while (comprobar == false);
             matriz = new string[r, g];
-
             for(int i = 0; i < r; i++) 
             { 
-                for(int j = 0; j<g; j++) 
+                for(int j = 0; j < g; j++) 
                 {
                     matriz[i, j] = ws.Cell(i, j).ValueAsString;
                 }

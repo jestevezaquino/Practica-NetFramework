@@ -4,8 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card mt-3">
-    <div class="card-header text-center  bg-success text-white"><h5>Datos Leídos</h5></div>
+    <div class="card-header text-center  bg-warning"><h5>Datos Leídos</h5></div>
     <div class="card-body bg-dark">
+        <p class="text-center text-danger">@ViewBag.message</p>
         <table class="table text-white">
             <thead>
                 <tr>
