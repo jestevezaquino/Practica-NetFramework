@@ -13,5 +13,11 @@ namespace Tarea4.Controllers
         {
             return View();
         }
+
+        public ActionResult Acerca()
+        {
+            return View();
+        }
+
     }
 }

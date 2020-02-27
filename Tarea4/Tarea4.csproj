@@ -196,6 +196,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Jesus-Estevez.jpeg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -253,6 +254,7 @@
     <Content Include="Views\Contenido\Noticias.cshtml" />
     <Content Include="Views\Contenido\Musica.cshtml" />
     <Content Include="Views\Contenido\Peliculas.cshtml" />
+    <Content Include="Views\Home\Acerca.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
