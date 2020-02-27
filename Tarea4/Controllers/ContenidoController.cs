@@ -18,5 +18,10 @@ namespace Tarea4.Controllers
         {
             return View();
         }
+
+        public ActionResult Peliculas()
+        {
+            return View();
+        }
     }
 }
